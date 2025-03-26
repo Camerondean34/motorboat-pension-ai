@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://ca00wpbiej7yu"]
+
+[ext_resource type="PackedScene" uid="uid://cdb60yuo4h7k2" path="res://Scenes/player.tscn" id="1_ptph0"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ptph0"]
+size = Vector2(800, 20)
+
+[node name="BoatScene" type="Node2D"]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="Player" parent="." instance=ExtResource("1_ptph0")]
+position = Vector2(-42, 47)
+scale = Vector2(0.5, 0.5)
+
+[node name="Floor" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor"]
+position = Vector2(-27, 285)
+shape = SubResource("RectangleShape2D_ptph0")
