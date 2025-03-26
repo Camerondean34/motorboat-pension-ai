@@ -1,17 +1,45 @@
-[gd_scene load_steps=5 format=3 uid="uid://cdb60yuo4h7k2"]
+[gd_scene load_steps=8 format=3 uid="uid://cdb60yuo4h7k2"]
 
 [ext_resource type="Script" uid="uid://dtns28gnyxpl1" path="res://Scripts/PlayerMovement.gd" id="1_cvnsp"]
-[ext_resource type="Texture2D" uid="uid://b6s2n0mr6ph0c" path="res://Assets/temp.png" id="2_6t5aa"]
+[ext_resource type="Texture2D" uid="uid://bjxr1fm28m0vq" path="res://Assets/PlayerLeft.png" id="2_fkybt"]
+[ext_resource type="Texture2D" uid="uid://dmdvp3frklwhf" path="res://Assets/PlayerFront.png" id="3_x3wgy"]
+[ext_resource type="Texture2D" uid="uid://vf8jdsjoka0v" path="res://Assets/PlayerWalkLeft.png" id="4_3smsa"]
+[ext_resource type="Texture2D" uid="uid://dbvm7hl7cc1de" path="res://Assets/PlayerWalkRight.png" id="5_8erm5"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_vgqql"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_6t5aa")
+"texture": ExtResource("2_fkybt")
 }],
 "loop": true,
-"name": &"default",
+"name": &"FaceLeft",
 "speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_x3wgy")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_fkybt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_3smsa")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_fkybt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_8erm5")
+}],
+"loop": true,
+"name": &"Walk",
+"speed": 6.0
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_fkybt"]
@@ -23,6 +51,12 @@ script = ExtResource("1_cvnsp")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_vgqql")
+animation = &"Walk"
+autoplay = "Walk"
+frame_progress = 0.519829
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_fkybt")
+
+[node name="IdleTimer" type="Timer" parent="."]
+wait_time = 2.0
