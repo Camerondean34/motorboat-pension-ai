@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://cdpja6rcakp8s"]
+
+[ext_resource type="Texture2D" uid="uid://cvhh1r02dknf6" path="res://Assets/Ocean.jpg" id="1_f381p"]
+
+[node name="OceanScene" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("1_f381p")
+
+[node name="Camera2D" type="Camera2D" parent="."]

@@ -1,20 +1,53 @@
-[gd_scene load_steps=3 format=3 uid="uid://ca00wpbiej7yu"]
+[gd_scene load_steps=8 format=3 uid="uid://ca00wpbiej7yu"]
 
+[ext_resource type="Texture2D" uid="uid://bwa3nroe4u384" path="res://Assets/BoatInterior.png" id="1_e1sr1"]
 [ext_resource type="PackedScene" uid="uid://cdb60yuo4h7k2" path="res://Scenes/player.tscn" id="1_ptph0"]
+[ext_resource type="Script" uid="uid://cd4lt031qqrmk" path="res://Scripts/BoatScene.gd" id="1_vu0h2"]
+[ext_resource type="Texture2D" uid="uid://b8wpd0dsth172" path="res://Assets/SteeringWheel.png" id="3_hlnli"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ptph0"]
-size = Vector2(800, 20)
+[sub_resource type="CircleShape2D" id="CircleShape2D_hlnli"]
+radius = 250.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vu0h2"]
+size = Vector2(250, 300)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_e1sr1"]
+size = Vector2(75, 600)
 
 [node name="BoatScene" type="Node2D"]
+script = ExtResource("1_vu0h2")
 
-[node name="Camera2D" type="Camera2D" parent="."]
+[node name="Background" type="Sprite2D" parent="."]
+position = Vector2(-300, 0)
+scale = Vector2(0.839, 0.825)
+texture = ExtResource("1_e1sr1")
+
+[node name="SteeringWheel" type="Node2D" parent="."]
+position = Vector2(400, 125)
+
+[node name="Sprite2D" type="Sprite2D" parent="SteeringWheel"]
+rotation = 3.14159
+scale = Vector2(0.45, -0.45)
+texture = ExtResource("3_hlnli")
+
+[node name="PromptArea" type="Area2D" parent="SteeringWheel"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SteeringWheel/PromptArea"]
+shape = SubResource("CircleShape2D_hlnli")
+
+[node name="Wall" type="StaticBody2D" parent="SteeringWheel"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SteeringWheel/Wall"]
+position = Vector2(0, 50)
+shape = SubResource("RectangleShape2D_vu0h2")
+
+[node name="DoorWall" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DoorWall"]
+position = Vector2(-1175, 0)
+shape = SubResource("RectangleShape2D_e1sr1")
 
 [node name="Player" parent="." instance=ExtResource("1_ptph0")]
-position = Vector2(-42, 47)
-scale = Vector2(0.5, 0.5)
 
-[node name="Floor" type="StaticBody2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor"]
-position = Vector2(-27, 285)
-shape = SubResource("RectangleShape2D_ptph0")
+[connection signal="body_entered" from="SteeringWheel/PromptArea" to="." method="_on_prompt_area_body_entered"]
+[connection signal="body_exited" from="SteeringWheel/PromptArea" to="." method="_on_prompt_area_body_exited"]

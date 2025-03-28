@@ -1,10 +1,12 @@
-[gd_scene load_steps=8 format=3 uid="uid://cdb60yuo4h7k2"]
+[gd_scene load_steps=10 format=3 uid="uid://cdb60yuo4h7k2"]
 
-[ext_resource type="Script" path="res://Scripts/PlayerMovement.gd" id="1_cvnsp"]
+[ext_resource type="Script" uid="uid://dtns28gnyxpl1" path="res://Scripts/PlayerMovement.gd" id="1_cvnsp"]
 [ext_resource type="Texture2D" uid="uid://bjxr1fm28m0vq" path="res://Assets/PlayerLeft.png" id="2_fkybt"]
 [ext_resource type="Texture2D" uid="uid://dmdvp3frklwhf" path="res://Assets/PlayerFront.png" id="3_x3wgy"]
 [ext_resource type="Texture2D" uid="uid://vf8jdsjoka0v" path="res://Assets/PlayerWalkLeft.png" id="4_3smsa"]
 [ext_resource type="Texture2D" uid="uid://dbvm7hl7cc1de" path="res://Assets/PlayerWalkRight.png" id="5_8erm5"]
+[ext_resource type="Script" uid="uid://ifus3as0rhc8" path="res://Scripts/PlayerButtonPrompt.gd" id="6_3smsa"]
+[ext_resource type="Texture2D" uid="uid://cnumqwmh7bbmb" path="res://Assets/ButtonPromptE.png" id="6_x3wgy"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_vgqql"]
 animations = [{
@@ -43,20 +45,38 @@ animations = [{
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_fkybt"]
-radius = 76.99
-height = 833.88
+radius = 30.0
+height = 400.0
 
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_cvnsp")
 
+[node name="Camera2D" type="Camera2D" parent="."]
+
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, 50)
+scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_vgqql")
 animation = &"Walk"
 autoplay = "Walk"
 frame_progress = 0.519829
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 50)
 shape = SubResource("CapsuleShape2D_fkybt")
 
 [node name="IdleTimer" type="Timer" parent="."]
 wait_time = 2.0
+
+[node name="ButtonPrompt" type="Node2D" parent="."]
+position = Vector2(0, -225)
+script = ExtResource("6_3smsa")
+
+[node name="ButtonSprite" type="Sprite2D" parent="ButtonPrompt"]
+visible = false
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("6_x3wgy")
+
+[node name="Timer" type="Timer" parent="ButtonPrompt"]
+wait_time = 0.5
+autostart = true

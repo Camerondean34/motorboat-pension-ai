@@ -1,4 +1,5 @@
 extends CharacterBody2D
+class_name Player
 
 @export var speed = 400
 var IsIdle = false
@@ -21,11 +22,18 @@ func _physics_process(_delta):
 		if $IdleTimer.is_stopped():
 			$IdleTimer.start()
 		$AnimatedSprite2D.animation = "FaceLeft"
-		
 	
 	move_and_slide()
 	
+	# Keep Camera within bounds of background image
+	$Camera2D.position.x = 0
+	if $Camera2D.global_position.x > 0:
+		$Camera2D.global_position.x = 0
+	elif $Camera2D.global_position.x < -625:
+		$Camera2D.global_position.x = -625
+	
 func _on_idle():
 	IsIdle = true
+	$AnimatedSprite2D.flip_h = false
 	$AnimatedSprite2D.animation = "Idle"
 	$IdleTimer.stop()
