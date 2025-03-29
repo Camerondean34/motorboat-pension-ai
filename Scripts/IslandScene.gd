@@ -17,6 +17,10 @@ func _on_prompt_area_body_exited(body: Node2D) -> void:
 func _input(event: InputEvent) -> void:
 	if PlayerByPensioner and event.is_action_pressed("Interact"):
 		capture_pensioner();
+		
+func update_ui() -> void:
+	
+	pass
 
 func capture_pensioner() -> void:
 	
@@ -26,4 +30,7 @@ func capture_pensioner() -> void:
 	
 	var pensioner = Pensioner.new()
 	PensionerPrison.prisoners.append(pensioner)
+	PlayerVariables.accountBalance += pensioner.payout;
+	
+	
 	

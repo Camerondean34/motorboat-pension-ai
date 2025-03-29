@@ -45,16 +45,3 @@ func _on_interest_payment_timer_timeout() -> void:
 	update_ui()
 	
 	
-# hopefully we'll replace the timer-based capture system
-# instead we want to be capturing pensioners from the environment
-
-func _on_capture_pensioner_timer_timeout() -> void:
-	
-	if PensionerPrison.prisoners.size() == PensionerPrison.pensionerCapacity:
-		return;
-	
-	var pensioner = Pensioner.new()
-	PensionerPrison.prisoners.append(pensioner)
-	
-	update_ui();
-	
