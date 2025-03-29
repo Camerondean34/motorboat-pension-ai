@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://bwa3nroe4u384" path="res://Assets/BoatInterior.png" id="1_e1sr1"]
 [ext_resource type="PackedScene" uid="uid://cdb60yuo4h7k2" path="res://Scenes/player.tscn" id="1_ptph0"]
-[ext_resource type="Script" uid="uid://cd4lt031qqrmk" path="res://Scripts/BoatScene.gd" id="1_vu0h2"]
+[ext_resource type="Script" path="res://Scripts/BoatScene.gd" id="1_vu0h2"]
 [ext_resource type="Texture2D" uid="uid://b8wpd0dsth172" path="res://Assets/SteeringWheel.png" id="3_hlnli"]
 [ext_resource type="PackedScene" path="res://Scenes/basement.tscn" id="4_8bu2l"]
 
