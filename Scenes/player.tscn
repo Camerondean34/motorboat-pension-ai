@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://cdb60yuo4h7k2"]
+[gd_scene load_steps=11 format=3 uid="uid://cdb60yuo4h7k2"]
 
 [ext_resource type="Script" uid="uid://dtns28gnyxpl1" path="res://Scripts/PlayerMovement.gd" id="1_cvnsp"]
 [ext_resource type="Texture2D" uid="uid://bjxr1fm28m0vq" path="res://Assets/PlayerLeft.png" id="2_fkybt"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://dbvm7hl7cc1de" path="res://Assets/PlayerWalkRight.png" id="5_8erm5"]
 [ext_resource type="Script" uid="uid://ifus3as0rhc8" path="res://Scripts/PlayerButtonPrompt.gd" id="6_3smsa"]
 [ext_resource type="Texture2D" uid="uid://cnumqwmh7bbmb" path="res://Assets/ButtonPromptE.png" id="6_x3wgy"]
+[ext_resource type="PackedScene" uid="uid://cacqv1tutnlbs" path="res://Scenes/player_hud.tscn" id="8_8erm5"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_vgqql"]
 animations = [{
@@ -51,8 +52,6 @@ height = 400.0
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_cvnsp")
 
-[node name="Camera2D" type="Camera2D" parent="."]
-
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, 50)
 scale = Vector2(0.5, 0.5)
@@ -80,3 +79,11 @@ texture = ExtResource("6_x3wgy")
 [node name="Timer" type="Timer" parent="ButtonPrompt"]
 wait_time = 0.5
 autostart = true
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="PlayerHUD" parent="Camera2D" instance=ExtResource("8_8erm5")]
+offset_left = -562.0
+offset_top = -312.0
+offset_right = -562.0
+offset_bottom = -312.0
