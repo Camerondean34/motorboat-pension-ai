@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 [gd_scene load_steps=8 format=4 uid="uid://cdpja6rcakp8s"]
 
 [ext_resource type="Script" path="res://Scenes/ocean_scene.gd" id="1_ga1tu"]
@@ -1473,6 +1474,14 @@ texture = ExtResource("2_ff1my")
 
 [sub_resource type="TileSet" id="TileSet_w1a6w"]
 sources/0 = SubResource("TileSetAtlasSource_mxaqx")
+=======
+[gd_scene load_steps=5 format=3 uid="uid://d1cdym8ucxiip"]
+
+[ext_resource type="Texture2D" uid="uid://bqs83x1x1tpf8" path="res://Assets/ocean2.jpg" id="1_8omnq"]
+[ext_resource type="PackedScene" uid="uid://bhxqohq4pj7e2" path="res://Scenes/boat_player_scene.tscn" id="2_8omnq"]
+[ext_resource type="PackedScene" uid="uid://cacqv1tutnlbs" path="res://Scenes/player_hud.tscn" id="3_7f60h"]
+[ext_resource type="AudioStream" uid="uid://pt5qr873sv5v" path="res://Assets/Misty Glass.mp3" id="4_dya6x"]
+>>>>>>> Stashed changes
 
 [node name="OceanScene" type="Node2D"]
 script = ExtResource("1_ga1tu")
@@ -1487,4 +1496,20 @@ anchor_mode = 0
 script = ExtResource("3_epqub")
 tile_map_layer = NodePath("..")
 
+<<<<<<< Updated upstream
 [node name="Pointer" type="Node2D" parent="."]
+=======
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="PlayerHUD" parent="Camera2D" instance=ExtResource("3_7f60h")]
+offset_left = -562.0
+offset_top = -312.0
+offset_right = -562.0
+offset_bottom = -312.0
+metadata/_edit_use_anchors_ = true
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_dya6x")
+volume_db = 0.577
+autoplay = true
+>>>>>>> Stashed changes
