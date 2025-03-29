@@ -3,6 +3,8 @@ class_name Player
 
 @export var speed = 400
 var IsIdle = false
+var CameraXMax = 0
+var CameraXMin = -625
 
 func _ready() -> void:
 	$IdleTimer.timeout.connect(_on_idle)
@@ -27,10 +29,10 @@ func _physics_process(_delta):
 	
 	# Keep Camera within bounds of background image
 	$Camera2D.position.x = 0
-	if $Camera2D.global_position.x > 0:
-		$Camera2D.global_position.x = 0
-	elif $Camera2D.global_position.x < -625:
-		$Camera2D.global_position.x = -625
+	if $Camera2D.global_position.x > CameraXMax:
+		$Camera2D.global_position.x = CameraXMax
+	elif $Camera2D.global_position.x < CameraXMin:
+		$Camera2D.global_position.x = CameraXMin
 	
 func _on_idle():
 	IsIdle = true
