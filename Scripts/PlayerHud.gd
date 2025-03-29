@@ -6,7 +6,7 @@ func _ready():
 func update_ui():
 	
 	var account_balance_label = $VBoxContainer/AccountBalanceLabel
-	account_balance_label.text = "Balance: $" + str(int(round(PlayerVariables.accountBalance)))
+	account_balance_label.text = "Balance: £" + str(int(round(PlayerVariables.accountBalance)))
 	
 	var charge_remaining_label = $"VBoxContainer/EnergyChargeLabel"
 	charge_remaining_label.text = "Charge: " + str(int(PlayerVariables.playerCharge)) + "%"
@@ -30,17 +30,31 @@ func _on_charge_depletion_timer_timeout() -> void:
 
 func calculate_pension_payout() -> int:
 	
-	return 1000 * PlayerVariables.numberOfCapturedPensioners;
+	var total_payout := 0
+	for hostage in PlayerVariables.hostages:
+		if hostage is Pensioner:
+			total_payout += hostage.payout
+
+	return total_payout
+
 
 func _on_interest_payment_timer_timeout() -> void:
 	
 	PlayerVariables.accountBalance = int(1.05 * PlayerVariables.accountBalance);
+	
 	update_ui()
+	
+	
+# hopefully we'll replace the timer-based capture system
+# instead we want to be capturing pensioners from the environment
 
 func _on_capture_pensioner_timer_timeout() -> void:
 	
-	PlayerVariables.numberOfCapturedPensioners += 1
-	if PlayerVariables.numberOfCapturedPensioners > PlayerVariables.pensionerCapacity:
-		PlayerVariables.numberOfCapturedPensioners = PlayerVariables.pensionerCapacity;
+	if PlayerVariables.hostages.size() == PlayerVariables.pensionerCapacity:
+		return;
+	
+	var pensioner = Pensioner.new()
+	PlayerVariables.hostages.append(pensioner)
 	
 	update_ui();
+	
