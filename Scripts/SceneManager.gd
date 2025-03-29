@@ -1,7 +1,7 @@
 extends Node
 
 var boat_scene
-var ocean_scene = preload("res://Scenes/ocean_scene.tscn").instantiate()
+var ocean_scene = preload("res://Scenes/ocean-scene.tscn").instantiate()
 var current_scene
 
 signal change_scene

@@ -7,8 +7,8 @@ var array_2d = []
 @export var rocks: Array[PackedScene] = []
 
 # Define the dimensions (for example, 3x3)
-var rows = 40
-var columns = 80
+var rows = 80
+var columns = 160
 
 var all_squads = []
 
