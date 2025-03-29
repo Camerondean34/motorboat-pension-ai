@@ -33,7 +33,7 @@ func _input(event: InputEvent) -> void:
 		if PlayerInBasement:
 			$Player.position.y -= 1000
 			$Player.CameraXMax = 0
-			$Player.CameraXMinaaa = -625
+			$Player.CameraXMin = -625
 		else:
 			$Player.position.y += 1000
 			$Player.CameraXMax = -670

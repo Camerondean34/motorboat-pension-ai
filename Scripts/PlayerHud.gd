@@ -31,9 +31,9 @@ func _on_charge_depletion_timer_timeout() -> void:
 func calculate_pension_payout() -> int:
 	
 	var total_payout := 0
-	for hostage in PlayerVariables.hostages:
-		if hostage is Pensioner:
-			total_payout += hostage.payout
+	for prisoner in PensionerPrison.prisoners:
+		if prisoner is Pensioner:
+			total_payout += prisoner.payout
 
 	return total_payout
 
@@ -50,11 +50,11 @@ func _on_interest_payment_timer_timeout() -> void:
 
 func _on_capture_pensioner_timer_timeout() -> void:
 	
-	if PlayerVariables.hostages.size() == PlayerVariables.pensionerCapacity:
+	if PensionerPrison.prisoners.size() == PensionerPrison.pensionerCapacity:
 		return;
 	
 	var pensioner = Pensioner.new()
-	PlayerVariables.hostages.append(pensioner)
+	PensionerPrison.prisoners.append(pensioner)
 	
 	update_ui();
 	
