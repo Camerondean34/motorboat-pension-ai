@@ -1,9 +1,9 @@
 [gd_scene load_steps=7 format=3 uid="uid://df4cpxoailrje"]
 
-[ext_resource type="Texture2D" uid="uid://kp40xp4tt8v7" path="res://Assets/Island.png" id="1_75bi5"]
+[ext_resource type="Texture2D" uid="uid://ci1pbcn4jo4n1" path="res://Assets/Island.png" id="1_75bi5"]
 [ext_resource type="Script" uid="uid://b8sxcd45lcx2p" path="res://Scripts/IslandScene.gd" id="1_lh2d1"]
 [ext_resource type="PackedScene" uid="uid://cdb60yuo4h7k2" path="res://Scenes/player.tscn" id="2_u5cto"]
-[ext_resource type="Texture2D" uid="uid://fuqu6ixsip8r" path="res://Assets/PensionerTemp01.png" id="2_urb66"]
+[ext_resource type="Texture2D" uid="uid://c5ofa6lqu4ldu" path="res://Assets/PensionerTemp01.png" id="2_urb66"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_u5cto"]
 size = Vector2(75, 600)
