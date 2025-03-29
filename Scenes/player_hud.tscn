@@ -1,0 +1,45 @@
+[gd_scene load_steps=2 format=3 uid="uid://cacqv1tutnlbs"]
+
+[ext_resource type="Script" uid="uid://w1ev6k6d0l18" path="res://Scripts/PlayerHud.gd" id="1_pk5j4"]
+
+[node name="PlayerHUD" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_pk5j4")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_right = 119.0
+offset_bottom = 77.0
+
+[node name="AccountBalanceLabel" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "£2,150"
+
+[node name="EnergyChargeLabel" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "100%"
+
+[node name="BoatHealthLabel" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "60%"
+
+[node name="PensionPayoutTimer" type="Timer" parent="."]
+wait_time = 2.0
+autostart = true
+
+[node name="ChargeDepletionTimer" type="Timer" parent="."]
+wait_time = 5.0
+autostart = true
+
+[node name="InterestPaymentTimer" type="Timer" parent="."]
+wait_time = 10.0
+autostart = true
+
+[connection signal="timeout" from="PensionPayoutTimer" to="." method="_on_pension_payout_timer_timeout"]
+[connection signal="timeout" from="ChargeDepletionTimer" to="." method="_on_charge_depletion_timer_timeout"]
+[connection signal="timeout" from="InterestPaymentTimer" to="." method="_on_interest_payment_timer_timeout"]
