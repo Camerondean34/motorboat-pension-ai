@@ -6,10 +6,10 @@ func _ready():
 func update_ui():
 	
 	var account_balance_label = $VBoxContainer/AccountBalanceLabel
-	account_balance_label.text = "Balance: $" + str(int(100 * round(PlayerVariables.accountBalance))/100)
+	account_balance_label.text = "Balance: £" + str(int(round(PlayerVariables.accountBalance)))
 	
 	var charge_remaining_label = $"VBoxContainer/EnergyChargeLabel"
-	charge_remaining_label.text = "Charge: " + str(int(100 * PlayerVariables.playerCharge)/100) + "%"
+	charge_remaining_label.text = "Charge: " + str(int(PlayerVariables.playerCharge)) + "%"
 	
 	var boat_health_label = $VBoxContainer/BoatHealthLabel
 	boat_health_label.text = "Boat HP: " + str(int(round(PlayerVariables.boatHealth))) + "%"
@@ -30,9 +30,31 @@ func _on_charge_depletion_timer_timeout() -> void:
 
 func calculate_pension_payout() -> int:
 	
-	return 1000;
+	var total_payout := 0
+	for prisoner in PensionerPrison.prisoners:
+		if prisoner is Pensioner:
+			total_payout += prisoner.payout
+
+	return total_payout
+
 
 func _on_interest_payment_timer_timeout() -> void:
 	
-	PlayerVariables.accountBalance = int(10 * 1.05 * PlayerVariables.accountBalance) / 10;
+	PlayerVariables.accountBalance = int(1.05 * PlayerVariables.accountBalance);
+	
 	update_ui()
+	
+	
+# hopefully we'll replace the timer-based capture system
+# instead we want to be capturing pensioners from the environment
+
+func _on_capture_pensioner_timer_timeout() -> void:
+	
+	if PensionerPrison.prisoners.size() == PensionerPrison.pensionerCapacity:
+		return;
+	
+	var pensioner = Pensioner.new()
+	PensionerPrison.prisoners.append(pensioner)
+	
+	update_ui();
+	

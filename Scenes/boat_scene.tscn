@@ -1,9 +1,13 @@
-[gd_scene load_steps=8 format=3 uid="uid://ca00wpbiej7yu"]
+[gd_scene load_steps=10 format=3 uid="uid://ca00wpbiej7yu"]
 
 [ext_resource type="Texture2D" uid="uid://bwa3nroe4u384" path="res://Assets/BoatInterior.png" id="1_e1sr1"]
 [ext_resource type="PackedScene" uid="uid://cdb60yuo4h7k2" path="res://Scenes/player.tscn" id="1_ptph0"]
 [ext_resource type="Script" path="res://Scripts/BoatScene.gd" id="1_vu0h2"]
 [ext_resource type="Texture2D" uid="uid://b8wpd0dsth172" path="res://Assets/SteeringWheel.png" id="3_hlnli"]
+[ext_resource type="PackedScene" path="res://Scenes/basement.tscn" id="4_8bu2l"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_d0olb"]
+radius = 138.87
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_hlnli"]
 radius = 250.0
@@ -21,6 +25,12 @@ script = ExtResource("1_vu0h2")
 position = Vector2(-300, 0)
 scale = Vector2(0.839, 0.825)
 texture = ExtResource("1_e1sr1")
+
+[node name="StairPromptArea" type="Area2D" parent="."]
+position = Vector2(-600, -50)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StairPromptArea"]
+shape = SubResource("CircleShape2D_d0olb")
 
 [node name="SteeringWheel" type="Node2D" parent="."]
 position = Vector2(400, 125)
@@ -47,7 +57,13 @@ shape = SubResource("RectangleShape2D_vu0h2")
 position = Vector2(-1175, 0)
 shape = SubResource("RectangleShape2D_e1sr1")
 
+[node name="Basement" parent="." instance=ExtResource("4_8bu2l")]
+position = Vector2(-800, 900)
+scale = Vector2(1.5, 1.5)
+
 [node name="Player" parent="." instance=ExtResource("1_ptph0")]
 
+[connection signal="body_entered" from="StairPromptArea" to="." method="_on_stair_prompt_area_body_entered"]
+[connection signal="body_exited" from="StairPromptArea" to="." method="_on_stair_prompt_area_body_exited"]
 [connection signal="body_entered" from="SteeringWheel/PromptArea" to="." method="_on_prompt_area_body_entered"]
 [connection signal="body_exited" from="SteeringWheel/PromptArea" to="." method="_on_prompt_area_body_exited"]

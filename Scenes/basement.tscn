@@ -1,0 +1,33 @@
+[gd_scene load_steps=5 format=3 uid="uid://dbrcwdtnjg5g1"]
+
+[ext_resource type="Texture2D" uid="uid://be5hiph82q02b" path="res://Assets/Basement.jpg" id="1_xbfwj"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xbfwj"]
+size = Vector2(60, 300)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gidub"]
+size = Vector2(125, 300)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_3vl5l"]
+radius = 100.0
+
+[node name="Basement" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_xbfwj")
+
+[node name="Walls" type="StaticBody2D" parent="Sprite2D"]
+
+[node name="LeftCollision" type="CollisionShape2D" parent="Sprite2D/Walls"]
+position = Vector2(-300, 100)
+shape = SubResource("RectangleShape2D_xbfwj")
+
+[node name="RightCollision" type="CollisionShape2D" parent="Sprite2D/Walls"]
+position = Vector2(300, 100)
+shape = SubResource("RectangleShape2D_gidub")
+
+[node name="PromptArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PromptArea"]
+position = Vector2(130, 100)
+shape = SubResource("CircleShape2D_3vl5l")
