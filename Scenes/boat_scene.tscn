@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://cdb60yuo4h7k2" path="res://Scenes/player.tscn" id="1_ptph0"]
 [ext_resource type="Script" uid="uid://cd4lt031qqrmk" path="res://Scripts/BoatScene.gd" id="1_vu0h2"]
 [ext_resource type="Texture2D" uid="uid://b8wpd0dsth172" path="res://Assets/SteeringWheel.png" id="3_hlnli"]
-[ext_resource type="PackedScene" uid="uid://dbrcwdtnjg5g1" path="res://Scenes/basement.tscn" id="4_8bu2l"]
+[ext_resource type="PackedScene" path="res://Scenes/basement.tscn" id="4_8bu2l"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_d0olb"]
 radius = 138.87
