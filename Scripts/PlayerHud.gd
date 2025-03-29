@@ -6,10 +6,10 @@ func _ready():
 func update_ui():
 	
 	var account_balance_label = $VBoxContainer/AccountBalanceLabel
-	account_balance_label.text = "Balance: $" + str(int(100 * round(PlayerVariables.accountBalance))/100)
+	account_balance_label.text = "Balance: $" + str(int(round(PlayerVariables.accountBalance)))
 	
 	var charge_remaining_label = $"VBoxContainer/EnergyChargeLabel"
-	charge_remaining_label.text = "Charge: " + str(int(100 * PlayerVariables.playerCharge)/100) + "%"
+	charge_remaining_label.text = "Charge: " + str(int(PlayerVariables.playerCharge)) + "%"
 	
 	var boat_health_label = $VBoxContainer/BoatHealthLabel
 	boat_health_label.text = "Boat HP: " + str(int(round(PlayerVariables.boatHealth))) + "%"
@@ -30,9 +30,17 @@ func _on_charge_depletion_timer_timeout() -> void:
 
 func calculate_pension_payout() -> int:
 	
-	return 1000;
+	return 1000 * PlayerVariables.numberOfCapturedPensioners;
 
 func _on_interest_payment_timer_timeout() -> void:
 	
-	PlayerVariables.accountBalance = int(10 * 1.05 * PlayerVariables.accountBalance) / 10;
+	PlayerVariables.accountBalance = int(1.05 * PlayerVariables.accountBalance);
 	update_ui()
+
+func _on_capture_pensioner_timer_timeout() -> void:
+	
+	PlayerVariables.numberOfCapturedPensioners += 1
+	if PlayerVariables.numberOfCapturedPensioners > PlayerVariables.pensionerCapacity:
+		PlayerVariables.numberOfCapturedPensioners = PlayerVariables.pensionerCapacity;
+	
+	update_ui();
