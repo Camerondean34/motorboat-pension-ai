@@ -17,9 +17,9 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-PensionerPrison="*res://Scripts/PensionerPrison.gd"
-PlayerVariables="*res://Scripts/PlayerVariables.gd"
-SceneManager="*res://Scripts/SceneManager.gd"
+PensionerPrison="*res://Scripts/Globals/PensionerPrison.gd"
+PlayerVariables="*res://Scripts/Globals/PlayerVariables.gd"
+SceneManager="*res://Scripts/Globals/SceneManager.gd"
 
 [dotnet]
 
