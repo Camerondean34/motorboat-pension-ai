@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://df4cpxoailrje"]
+[gd_scene load_steps=13 format=3 uid="uid://df4cpxoailrje"]
 
 [ext_resource type="Script" uid="uid://b8sxcd45lcx2p" path="res://Scripts/IslandScene.gd" id="1_lh2d1"]
 [ext_resource type="Texture2D" uid="uid://cefcw5wepwqkg" path="res://Assets/Backgrounds/Island/Island01.jpg" id="2_06aq0"]
@@ -10,7 +10,6 @@
 [ext_resource type="Texture2D" uid="uid://dnhv7meivo6ps" path="res://Assets/Pensioners/Pensioner03.png" id="4_5chh7"]
 [ext_resource type="Texture2D" uid="uid://da63gys80tpmp" path="res://Assets/Backgrounds/Island/Island03.jpg" id="4_o3poh"]
 [ext_resource type="Texture2D" uid="uid://c0eybc3bvche7" path="res://Assets/Pensioners/Pensioner04.png" id="5_hdgsi"]
-[ext_resource type="Texture2D" uid="uid://bc23f2132gx1p" path="res://Assets/Pensioners/PensionerInBodyBag.png" id="11_5chh7"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_u5cto"]
 size = Vector2(75, 600)
@@ -19,7 +18,7 @@ size = Vector2(75, 600)
 radius = 64.1252
 height = 218.924
 
-[node name="IslandScene" type="Node2D" node_paths=PackedStringArray("pensioner_node", "background_node", "body_bag_node")]
+[node name="IslandScene" type="Node2D" node_paths=PackedStringArray("pensioner_node", "background_node")]
 script = ExtResource("1_lh2d1")
 pensioner_node = NodePath("PensionerSprite")
 pensioner_img_01 = ExtResource("3_lh2d1")
@@ -31,7 +30,6 @@ island_bg_01 = ExtResource("2_06aq0")
 island_bg_02 = ExtResource("3_o74d1")
 island_bg_03 = ExtResource("4_o3poh")
 island_bg_04 = ExtResource("2_lh2d1")
-body_bag_node = NodePath("BodyBagSprite")
 
 [node name="Background" type="Sprite2D" parent="."]
 position = Vector2(-410, 116)
@@ -61,10 +59,6 @@ debug_color = Color(0, 0.649767, 0.129053, 0.42)
 
 [node name="Player" parent="." instance=ExtResource("2_u5cto")]
 position = Vector2(-72, 117)
-
-[node name="BodyBagSprite" type="Sprite2D" parent="."]
-position = Vector2(-921, 343)
-texture = ExtResource("11_5chh7")
 
 [connection signal="body_entered" from="PensionerSprite/PromptArea" to="." method="_on_prompt_area_body_entered"]
 [connection signal="body_exited" from="PensionerSprite/PromptArea" to="." method="_on_prompt_area_body_exited"]
