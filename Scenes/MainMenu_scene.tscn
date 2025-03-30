@@ -71,11 +71,11 @@ texture = ExtResource("1_h8aqk")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 texture_filter = 1
-offset_left = -802.487
-offset_top = -133.746
-offset_right = -684.487
-offset_bottom = 20.2538
-scale = Vector2(2, 2)
+offset_left = -890.363
+offset_top = -227.368
+offset_right = -704.363
+offset_bottom = -13.3685
+scale = Vector2(2.5, 2.5)
 alignment = 1
 script = ExtResource("2_h8aqk")
 
