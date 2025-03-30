@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cs8fnstkva5p8"
-path="res://.godot/imported/PensionerTemp01.png-13bf649c3487fd1f0977b85716e9e8cc.ctex"
+uid="uid://ciilqb4qo6t0b"
+path="res://.godot/imported/Pensioner02.png-4a713edf140643505747b196069dd708.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/PensionerTemp01.png"
-dest_files=["res://.godot/imported/PensionerTemp01.png-13bf649c3487fd1f0977b85716e9e8cc.ctex"]
+source_file="res://Assets/Pensioners/Pensioner02.png"
+dest_files=["res://.godot/imported/Pensioner02.png-4a713edf140643505747b196069dd708.ctex"]
 
 [params]
 
