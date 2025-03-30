@@ -3,7 +3,6 @@
 [ext_resource type="Texture2D" uid="uid://bkf72jqn8c8ix" path="res://Assets/Boat/Boat.png" id="1_0rmwn"]
 [ext_resource type="Script" uid="uid://bsacja7pks6pq" path="res://Scripts/boat_movement.gd" id="1_1yyuf"]
 
-
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_egpl6"]
 radius = 53.0
 height = 276.0
