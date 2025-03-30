@@ -1,8 +1,7 @@
 extends VBoxContainer
-@onready var camera_2d: Camera2D = $Camera2D
+
 @onready var animation_player: AnimationPlayer = $"../CanvasLayer/AnimationPlayer"
 
-@onready var canvas_layer: CanvasLayer = $CanvasLayer
 @onready var color_rect: ColorRect = $"../CanvasLayer/ColorRect"
 
 func _on_start_game_button_down() -> void:
