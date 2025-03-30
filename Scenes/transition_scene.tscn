@@ -1,0 +1,19 @@
+[gd_scene load_steps=2 format=3 uid="uid://bnkapptfc47tm"]
+
+[sub_resource type="GDScript" id="GDScript_dk6jx"]
+script/source = "extends CanvasLayer
+
+signal transitioned
+func _ready():
+	transition()
+func transition():
+	$AnimationPlayer.play(\"transition\")
+
+func _on_AnimationPlayer_finished(anim_name):
+	if anim_name == \"transition\":
+		emit_signal(\"transitioned\")
+		
+"
+
+[node name="Node2D" type="CanvasLayer"]
+script = SubResource("GDScript_dk6jx")
