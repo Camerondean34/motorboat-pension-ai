@@ -2,8 +2,14 @@ extends Node2D
 var PlayerByWheel = false
 var PlayerByStairs = false
 var PlayerInBasement = false
+@onready var animation_player: AnimationPlayer = $CanvasLayer/AnimationPlayer
+@onready var color_rect: ColorRect = $CanvasLayer/ColorRect
 
 func _ready() -> void:
+	animation_player.play("reverse_transition")
+	await get_tree().create_timer(1).timeout  
+	color_rect.set_visible(false)
+
 	SceneManager.set_up.emit(self)
 	$Basement/PromptArea.body_entered.connect(_on_stair_prompt_area_body_entered)
 	$Basement/PromptArea.body_exited.connect(_on_stair_prompt_area_body_exited)

@@ -1,10 +1,62 @@
-[gd_scene load_steps=10 format=3 uid="uid://ca00wpbiej7yu"]
+[gd_scene load_steps=14 format=3 uid="uid://ca00wpbiej7yu"]
 
 [ext_resource type="Texture2D" uid="uid://bwa3nroe4u384" path="res://Assets/Backgrounds/Boat/BoatInterior.png" id="1_e1sr1"]
 [ext_resource type="PackedScene" uid="uid://cdb60yuo4h7k2" path="res://Scenes/player.tscn" id="1_ptph0"]
 [ext_resource type="Script" uid="uid://cd4lt031qqrmk" path="res://Scripts/BoatScene.gd" id="1_vu0h2"]
 [ext_resource type="Texture2D" uid="uid://b8wpd0dsth172" path="res://Assets/Items/SteeringWheel.png" id="3_hlnli"]
 [ext_resource type="PackedScene" uid="uid://dbrcwdtnjg5g1" path="res://Scenes/basement.tscn" id="4_8bu2l"]
+
+[sub_resource type="Animation" id="Animation_72rgs"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_ytrps"]
+resource_name = "reverse_transition"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 1), Color(0, 0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_dk6jx"]
+resource_name = "transition"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ytrps"]
+_data = {
+&"RESET": SubResource("Animation_72rgs"),
+&"reverse_transition": SubResource("Animation_ytrps"),
+&"transition": SubResource("Animation_dk6jx")
+}
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_d0olb"]
 radius = 138.87
@@ -20,6 +72,25 @@ size = Vector2(75, 600)
 
 [node name="BoatScene" type="Node2D"]
 script = ExtResource("1_vu0h2")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -1570.0
+offset_top = -679.0
+offset_right = 750.0
+offset_bottom = 900.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer"]
+libraries = {
+&"": SubResource("AnimationLibrary_ytrps")
+}
 
 [node name="Background" type="Sprite2D" parent="."]
 position = Vector2(-300, 0)
