@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cnumqwmh7bbmb"
-path="res://.godot/imported/ButtonPromptE.png-dff451785024dd06029ea42d41cde885.ctex"
+uid="uid://bmnp6jr4ut2vj"
+path="res://.godot/imported/BrainInJar.png-315ab87a251f5c2d102ba9e540638d33.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/ButtonPromptE.png"
-dest_files=["res://.godot/imported/ButtonPromptE.png-dff451785024dd06029ea42d41cde885.ctex"]
+source_file="res://Assets/Items/BrainInJar.png"
+dest_files=["res://.godot/imported/BrainInJar.png-315ab87a251f5c2d102ba9e540638d33.ctex"]
 
 [params]
 

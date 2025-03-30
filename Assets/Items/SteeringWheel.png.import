@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bmnp6jr4ut2vj"
-path="res://.godot/imported/BrainInJar.png-f0bbec0db2a964593b66578232e8e29f.ctex"
+uid="uid://b8wpd0dsth172"
+path="res://.godot/imported/SteeringWheel.png-a81b1d22f904e61e9412d5420bf42769.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/BrainInJar.png"
-dest_files=["res://.godot/imported/BrainInJar.png-f0bbec0db2a964593b66578232e8e29f.ctex"]
+source_file="res://Assets/Items/SteeringWheel.png"
+dest_files=["res://.godot/imported/SteeringWheel.png-a81b1d22f904e61e9412d5420bf42769.ctex"]
 
 [params]
 
