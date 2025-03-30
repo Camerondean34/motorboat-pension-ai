@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cxcpxxop7exg1"
-path="res://.godot/imported/RobotFist.png-d5bd07df89d002960f287a5750a8c104.ctex"
+uid="uid://crte0cxvbljkc"
+path="res://.godot/imported/RobotHand.png-aa36df038c50d4eadd740eef7bceb63f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/RobotFist.png"
-dest_files=["res://.godot/imported/RobotFist.png-d5bd07df89d002960f287a5750a8c104.ctex"]
+source_file="res://Assets/Robot/RobotHand.png"
+dest_files=["res://.godot/imported/RobotHand.png-aa36df038c50d4eadd740eef7bceb63f.ctex"]
 
 [params]
 

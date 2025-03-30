@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://crte0cxvbljkc"
-path="res://.godot/imported/RobotHand.png-e6a0ed8108198febc99ad05ca18efd06.ctex"
+uid="uid://dmdvp3frklwhf"
+path="res://.godot/imported/PlayerFront.png-453a368de0d15f551ef2a4e9e2c3f10d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/RobotHand.png"
-dest_files=["res://.godot/imported/RobotHand.png-e6a0ed8108198febc99ad05ca18efd06.ctex"]
+source_file="res://Assets/Robot/PlayerFront.png"
+dest_files=["res://.godot/imported/PlayerFront.png-453a368de0d15f551ef2a4e9e2c3f10d.ctex"]
 
 [params]
 
