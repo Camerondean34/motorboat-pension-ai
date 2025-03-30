@@ -1,6 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://dbrcwdtnjg5g1"]
 
-[ext_resource type="Texture2D" uid="uid://be5hiph82q02b" path="res://Assets/Basement.jpg" id="1_xbfwj"]
+[ext_resource type="Texture2D" uid="uid://be5hiph82q02b" path="res://Assets/Backgrounds/Boat/Basement.jpg" id="1_xbfwj"]
+
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xbfwj"]
 size = Vector2(60, 300)
