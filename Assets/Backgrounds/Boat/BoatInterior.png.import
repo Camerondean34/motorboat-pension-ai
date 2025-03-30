@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cvhh1r02dknf6"
-path="res://.godot/imported/Ocean.jpg-c665b0e8576dcd4ee8aa012ed869631d.ctex"
+uid="uid://bwa3nroe4u384"
+path="res://.godot/imported/BoatInterior.png-ed4a12dae25c09a4cfdb229447d7d66a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Ocean.jpg"
-dest_files=["res://.godot/imported/Ocean.jpg-c665b0e8576dcd4ee8aa012ed869631d.ctex"]
+source_file="res://Assets/Backgrounds/Boat/BoatInterior.png"
+dest_files=["res://.godot/imported/BoatInterior.png-ed4a12dae25c09a4cfdb229447d7d66a.ctex"]
 
 [params]
 

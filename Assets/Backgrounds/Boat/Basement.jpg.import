@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bqs83x1x1tpf8"
-path="res://.godot/imported/ocean2.jpg-4e8438aec7d7966dc883e925e5d6d960.ctex"
+uid="uid://be5hiph82q02b"
+path="res://.godot/imported/Basement.jpg-98550c7fd34249b6d71fe2328d604e14.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/ocean2.jpg"
-dest_files=["res://.godot/imported/ocean2.jpg-4e8438aec7d7966dc883e925e5d6d960.ctex"]
+source_file="res://Assets/Backgrounds/Boat/Basement.jpg"
+dest_files=["res://.godot/imported/Basement.jpg-98550c7fd34249b6d71fe2328d604e14.ctex"]
 
 [params]
 
