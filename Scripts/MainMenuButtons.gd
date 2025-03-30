@@ -15,3 +15,7 @@ func _on_start_game_button_down() -> void:
 
 func _on_quit_button_down() -> void:
 	get_tree().quit()
+
+
+func _on_start_game_mouse_entered() -> void:
+	pass # Replace with function body.
