@@ -34,12 +34,12 @@ func _ready() -> void:
 	pensioner_node.visible = true;
 
 func _on_prompt_area_body_entered(body: Node2D) -> void:
-	if body is Player:
+	if body is Player and PensionerAlive:
 		$Player/ButtonPrompt.togglePrompt.emit()
 		PlayerByPensioner = true
 
 func _on_prompt_area_body_exited(body: Node2D) -> void:
-	if body is Player:
+	if body is Player and PensionerAlive:
 		$Player/ButtonPrompt.togglePrompt.emit()
 		PlayerByPensioner = false # Replace with function body.
 
@@ -65,4 +65,6 @@ func capture_pensioner() -> void:
 	
 	pensioner_node.visible = false;
 	PensionerAlive = false;
+	$Player/ButtonPrompt.togglePrompt.emit()
+	
 	
