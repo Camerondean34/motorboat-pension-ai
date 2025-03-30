@@ -22,6 +22,7 @@ func _on_scene_change() -> void:
 		call_deferred("_deferred_goto_scene", boat_scene)
 	
 func _deferred_goto_scene(scene):
-	get_tree().root.remove_child(current_scene)
+	if current_scene and current_scene.get_parent():
+		get_tree().root.remove_child(current_scene)
 	get_tree().root.add_child(scene)
 	current_scene = scene
