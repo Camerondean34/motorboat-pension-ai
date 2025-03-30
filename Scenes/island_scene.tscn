@@ -1,9 +1,15 @@
-[gd_scene load_steps=7 format=3 uid="uid://df4cpxoailrje"]
+[gd_scene load_steps=13 format=3 uid="uid://df4cpxoailrje"]
 
 [ext_resource type="Script" uid="uid://b8sxcd45lcx2p" path="res://Scripts/IslandScene.gd" id="1_lh2d1"]
+[ext_resource type="Texture2D" uid="uid://cefcw5wepwqkg" path="res://Assets/Backgrounds/Island/Island01.jpg" id="2_06aq0"]
 [ext_resource type="Texture2D" uid="uid://ls5xg1vmiagm" path="res://Assets/Backgrounds/Island/Island04.jpg" id="2_lh2d1"]
 [ext_resource type="PackedScene" uid="uid://cdb60yuo4h7k2" path="res://Scenes/player.tscn" id="2_u5cto"]
+[ext_resource type="Texture2D" uid="uid://ciilqb4qo6t0b" path="res://Assets/Pensioners/Pensioner02.png" id="3_jd8dt"]
 [ext_resource type="Texture2D" uid="uid://tbxaw4b4pkky" path="res://Assets/Pensioners/Pensioner01.png" id="3_lh2d1"]
+[ext_resource type="Texture2D" uid="uid://8oaseqgtkjit" path="res://Assets/Backgrounds/Island/Island02.jpg" id="3_o74d1"]
+[ext_resource type="Texture2D" uid="uid://dnhv7meivo6ps" path="res://Assets/Pensioners/Pensioner03.png" id="4_5chh7"]
+[ext_resource type="Texture2D" uid="uid://da63gys80tpmp" path="res://Assets/Backgrounds/Island/Island03.jpg" id="4_o3poh"]
+[ext_resource type="Texture2D" uid="uid://c0eybc3bvche7" path="res://Assets/Pensioners/Pensioner04.png" id="5_hdgsi"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_u5cto"]
 size = Vector2(75, 600)
@@ -12,8 +18,18 @@ size = Vector2(75, 600)
 radius = 64.1252
 height = 218.924
 
-[node name="IslandScene" type="Node2D"]
+[node name="IslandScene" type="Node2D" node_paths=PackedStringArray("pensioner_node", "background_node")]
 script = ExtResource("1_lh2d1")
+pensioner_node = NodePath("PensionerSprite")
+pensioner_img_01 = ExtResource("3_lh2d1")
+pensioner_img_02 = ExtResource("3_jd8dt")
+pensioner_img_03 = ExtResource("4_5chh7")
+pensioner_img_04 = ExtResource("5_hdgsi")
+background_node = NodePath("Background")
+island_bg_01 = ExtResource("2_06aq0")
+island_bg_02 = ExtResource("3_o74d1")
+island_bg_03 = ExtResource("4_o3poh")
+island_bg_04 = ExtResource("2_lh2d1")
 
 [node name="Background" type="Sprite2D" parent="."]
 position = Vector2(-410, 116)
@@ -26,17 +42,17 @@ texture = ExtResource("2_lh2d1")
 position = Vector2(464, 144)
 shape = SubResource("RectangleShape2D_u5cto")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="PensionerSprite" type="Sprite2D" parent="."]
 position = Vector2(-1013, 174)
 scale = Vector2(0.662581, 0.662581)
 texture = ExtResource("3_lh2d1")
 metadata/_edit_group_ = true
 
-[node name="PromptArea" type="Area2D" parent="Sprite2D"]
+[node name="PromptArea" type="Area2D" parent="PensionerSprite"]
 position = Vector2(4951.5, 6.10352e-05)
 scale = Vector2(3.69515, 3.69515)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/PromptArea"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PensionerSprite/PromptArea"]
 position = Vector2(-1339.59, -8.98572)
 shape = SubResource("CapsuleShape2D_aloii")
 debug_color = Color(0, 0.649767, 0.129053, 0.42)
@@ -44,5 +60,5 @@ debug_color = Color(0, 0.649767, 0.129053, 0.42)
 [node name="Player" parent="." instance=ExtResource("2_u5cto")]
 position = Vector2(-72, 117)
 
-[connection signal="body_entered" from="Sprite2D/PromptArea" to="." method="_on_prompt_area_body_entered"]
-[connection signal="body_exited" from="Sprite2D/PromptArea" to="." method="_on_prompt_area_body_exited"]
+[connection signal="body_entered" from="PensionerSprite/PromptArea" to="." method="_on_prompt_area_body_entered"]
+[connection signal="body_exited" from="PensionerSprite/PromptArea" to="." method="_on_prompt_area_body_exited"]
