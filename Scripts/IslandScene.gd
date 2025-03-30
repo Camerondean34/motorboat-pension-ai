@@ -1,5 +1,6 @@
 extends Node2D
 var PlayerByPensioner = false
+var PensionerAlive = true
 
 @export var pensioner_node: Sprite2D
 @export var pensioner_img_01: Texture2D
@@ -12,6 +13,8 @@ var PlayerByPensioner = false
 @export var island_bg_02: Texture2D
 @export var island_bg_03: Texture2D
 @export var island_bg_04: Texture2D
+
+@export var body_bag_node: Sprite2D
 
 func get_random_pensioner_image() -> Texture2D:
 	var options = [pensioner_img_01, pensioner_img_02, pensioner_img_03, pensioner_img_04]
@@ -30,6 +33,10 @@ func _ready() -> void:
 	var pensionerImg = get_random_pensioner_image();
 	pensioner_node.texture = pensionerImg;
 	
+	PensionerAlive = true;
+	pensioner_node.visible = true;
+	body_bag_node.visible = false;
+	
 
 func _on_prompt_area_body_entered(body: Node2D) -> void:
 	if body is Player:
@@ -42,7 +49,7 @@ func _on_prompt_area_body_exited(body: Node2D) -> void:
 		PlayerByPensioner = false # Replace with function body.
 
 func _input(event: InputEvent) -> void:
-	if PlayerByPensioner and event.is_action_pressed("Interact"):
+	if PlayerByPensioner and PensionerAlive and event.is_action_pressed("Interact"):
 		capture_pensioner();
 		
 
@@ -61,5 +68,7 @@ func capture_pensioner() -> void:
 	PensionerPrison.prisoners.append(pensioner)
 	PlayerVariables.accountBalance += pensioner.payout;
 	
-	
+	pensioner_node.visible = false;
+	body_bag_node.visible = true;
+	PensionerAlive = false;
 	
