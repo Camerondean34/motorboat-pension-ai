@@ -113,5 +113,5 @@ func mark_squad_as_contested(squad: Array):
 		array_2d[x][y] = 1
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	pass

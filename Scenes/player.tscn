@@ -9,7 +9,6 @@
 [ext_resource type="Texture2D" uid="uid://cnumqwmh7bbmb" path="res://Assets/UI Elements/ButtonPromptE.png" id="6_x3wgy"]
 [ext_resource type="PackedScene" uid="uid://cacqv1tutnlbs" path="res://Scenes/player_hud.tscn" id="8_8erm5"]
 
-
 [sub_resource type="SpriteFrames" id="SpriteFrames_vgqql"]
 animations = [{
 "frames": [{

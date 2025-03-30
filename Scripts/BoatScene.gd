@@ -11,8 +11,8 @@ func _ready() -> void:
 	color_rect.set_visible(false)
 
 	SceneManager.set_up.emit(self)
-	$Basement/PromptArea.body_entered.connect(_on_stair_prompt_area_body_entered)
-	$Basement/PromptArea.body_exited.connect(_on_stair_prompt_area_body_exited)
+	$Basement/StairPromptArea.body_entered.connect(_on_stair_prompt_area_body_entered)
+	$Basement/StairPromptArea.body_exited.connect(_on_stair_prompt_area_body_exited)
 
 func _on_prompt_area_body_entered(body: Node2D) -> void:
 	if body is Player:
@@ -24,13 +24,13 @@ func _on_prompt_area_body_exited(body: Node2D) -> void:
 		PlayerByWheel = false
 
 func _on_stair_prompt_area_body_entered(body: Node2D) -> void:
-	if body is Player:
+	if body is Player and !PlayerByStairs:
 		$Player/ButtonPrompt.togglePrompt.emit()
 		PlayerByStairs = true
 func _on_stair_prompt_area_body_exited(body: Node2D) -> void:
-	if body is Player:
+	if body is Player and PlayerByStairs:
 		$Player/ButtonPrompt.togglePrompt.emit()
-		PlayerByStairs = true
+		PlayerByStairs = false
 
 func _input(event: InputEvent) -> void:
 	if PlayerByWheel and event.is_action_pressed("Interact"):
@@ -42,6 +42,8 @@ func _input(event: InputEvent) -> void:
 			$Player.CameraXMin = -625
 		else:
 			$Player.position.y += 1000
+			$Player.position.x = -525
 			$Player.CameraXMax = -670
 			$Player.CameraXMin = -825
+			$Basement._on_player_entered_basement()
 		PlayerInBasement = !PlayerInBasement

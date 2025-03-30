@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://dbrcwdtnjg5g1"]
+[gd_scene load_steps=7 format=3 uid="uid://dbrcwdtnjg5g1"]
 
+[ext_resource type="Script" uid="uid://bhuthck02j2kp" path="res://Scripts/basement.gd" id="1_3vl5l"]
 [ext_resource type="Texture2D" uid="uid://be5hiph82q02b" path="res://Assets/Backgrounds/Boat/Basement.jpg" id="1_xbfwj"]
-
+[ext_resource type="PackedScene" uid="uid://dguwvhhw7e7fb" path="res://Scenes/bed.tscn" id="2_gidub"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xbfwj"]
 size = Vector2(60, 300)
@@ -10,25 +11,30 @@ size = Vector2(60, 300)
 size = Vector2(125, 300)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_3vl5l"]
-radius = 100.0
+radius = 50.0
 
 [node name="Basement" type="Node2D"]
+script = ExtResource("1_3vl5l")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="BackgroundSprite" type="Sprite2D" parent="."]
 texture = ExtResource("1_xbfwj")
 
-[node name="Walls" type="StaticBody2D" parent="Sprite2D"]
+[node name="Walls" type="StaticBody2D" parent="BackgroundSprite"]
 
-[node name="LeftCollision" type="CollisionShape2D" parent="Sprite2D/Walls"]
+[node name="LeftCollision" type="CollisionShape2D" parent="BackgroundSprite/Walls"]
 position = Vector2(-300, 100)
 shape = SubResource("RectangleShape2D_xbfwj")
 
-[node name="RightCollision" type="CollisionShape2D" parent="Sprite2D/Walls"]
+[node name="RightCollision" type="CollisionShape2D" parent="BackgroundSprite/Walls"]
 position = Vector2(300, 100)
 shape = SubResource("RectangleShape2D_gidub")
 
-[node name="PromptArea" type="Area2D" parent="."]
+[node name="Bed" parent="." instance=ExtResource("2_gidub")]
+position = Vector2(-142, 206)
+scale = Vector2(0.3, 0.3)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="PromptArea"]
-position = Vector2(130, 100)
+[node name="StairPromptArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StairPromptArea"]
+position = Vector2(175, 150)
 shape = SubResource("CircleShape2D_3vl5l")
