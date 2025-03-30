@@ -2,7 +2,7 @@
 .godot/
 /android/
 
-# Godot-specific ignores
+# Godot-specific ignores (from previous git ignore)
 .import/
 export.cfg
 export_presets.cfg
