@@ -16,6 +16,7 @@ func _physics_process(_delta):
 	
 	look_at(get_global_mouse_position())
 	var input_velocity = Input.get_vector("Left", "Right", "Up", "Down")
+	input_velocity.x = 0
 	if input_velocity.length() > 0:
 		velocity = input_velocity
 		speed = max_speed
