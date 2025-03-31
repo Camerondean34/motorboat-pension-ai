@@ -106,3 +106,7 @@ func place_random_island():
 	island_instance.position = center_pos * 16
 	add_child(island_instance)
 	mark_squad_as_contested(large_squad)
+
+func _input(event: InputEvent) -> void:
+	if event.is_action("Escape"):
+		SceneManager.change_scene.emit("BOAT", false)

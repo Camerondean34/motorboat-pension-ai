@@ -1,28 +1,31 @@
 extends Node
 
-var boat_scene
+var boat_scene = preload("res://Scenes/boat_scene.tscn").instantiate()
 var ocean_scene = preload("res://Scenes/ocean-scene.tscn").instantiate()
 var current_scene
 
-signal change_scene
-signal set_up(scene)
+signal change_scene(path, deleteCurrent)
 
 func _ready() -> void:
 	change_scene.connect(_on_scene_change)
-	set_up.connect(_set_up)
 	
-func _set_up(scene) -> void:
-	boat_scene = scene
-	current_scene = boat_scene
+func _setup(scene) -> void:
+	current_scene = scene
 	
-func _on_scene_change() -> void:
-	if current_scene == boat_scene:
-		call_deferred("_deferred_goto_scene", ocean_scene)
+func _on_scene_change(pPath, pDeleteCurrent) -> void:
+	var new_scene
+	if pPath == "BOAT":
+		new_scene = boat_scene
+	elif pPath == "OCEAN":
+		new_scene = ocean_scene
 	else:
-		call_deferred("_deferred_goto_scene", boat_scene)
+		new_scene = load(pPath).instantiate()
+	call_deferred("_deferred_goto_scene", new_scene,pDeleteCurrent)
 	
-func _deferred_goto_scene(scene):
+func _deferred_goto_scene(scene, pDeleteCurrent):
 	if current_scene and current_scene.get_parent():
 		get_tree().root.remove_child(current_scene)
 	get_tree().root.add_child(scene)
+	if pDeleteCurrent:
+		current_scene.queue_free()
 	current_scene = scene

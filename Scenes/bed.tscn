@@ -86,3 +86,6 @@ animation = &"3"
 position = Vector2(-10, -230)
 scale = Vector2(0.159, 0.1385)
 texture = ExtResource("7_u53vp")
+
+[connection signal="body_entered" from="PromptArea" to="." method="_on_prompt_area_body_entered"]
+[connection signal="body_exited" from="PromptArea" to="." method="_on_prompt_area_body_exited"]

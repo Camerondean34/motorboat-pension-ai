@@ -4,6 +4,9 @@ extends VBoxContainer
 
 @onready var color_rect: ColorRect = $"../CanvasLayer/ColorRect"
 
+func _ready() -> void:
+	SceneManager._setup(get_parent())
+
 func _on_start_game_button_down() -> void:
 	color_rect.set_visible(true)
 	
@@ -11,7 +14,7 @@ func _on_start_game_button_down() -> void:
 	
 	await get_tree().create_timer(1).timeout 
 
-	get_tree().change_scene_to_file("res://Scenes/boat_scene.tscn")
+	SceneManager.change_scene.emit("BOAT", true)
 
 func _on_quit_button_down() -> void:
 	get_tree().quit()

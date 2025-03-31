@@ -9,8 +9,6 @@ func _ready() -> void:
 	animation_player.play("reverse_transition")
 	await get_tree().create_timer(1).timeout  
 	color_rect.set_visible(false)
-
-	SceneManager.set_up.emit(self)
 	$Basement/StairPromptArea.body_entered.connect(_on_stair_prompt_area_body_entered)
 	$Basement/StairPromptArea.body_exited.connect(_on_stair_prompt_area_body_exited)
 
@@ -34,7 +32,7 @@ func _on_stair_prompt_area_body_exited(body: Node2D) -> void:
 
 func _input(event: InputEvent) -> void:
 	if PlayerByWheel and event.is_action_pressed("Interact"):
-		SceneManager.change_scene.emit()
+		SceneManager.change_scene.emit("OCEAN", false)
 	if PlayerByStairs and event.is_action_pressed("Interact"):
 		if PlayerInBasement:
 			$Player.position.y -= 1000
