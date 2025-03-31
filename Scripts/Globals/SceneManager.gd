@@ -19,7 +19,8 @@ func _on_scene_change(pPath, pDeleteCurrent) -> void:
 	elif pPath == "OCEAN":
 		new_scene = ocean_scene
 	else:
-		new_scene = load(pPath).instantiate()
+		var s = ResourceLoader.load(pPath)
+		new_scene = s.instantiate()
 	call_deferred("_deferred_goto_scene", new_scene,pDeleteCurrent)
 	
 func _deferred_goto_scene(scene, pDeleteCurrent):

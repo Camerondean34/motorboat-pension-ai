@@ -1,23 +1,33 @@
 extends Node2D
 
+var brain_wall = preload("res://Scenes/brain_wall.tscn")
 var maze_array = []
-var maze_width = 35 # Both of these should be odd
-var maze_height = 35
+var maze_width = 19 # Both of these should be odd
+var maze_height = 19
 
 func _ready() -> void:
 	_init_maze()
 	_generate_maze(0, 0)
+	for x in range(floor(maze_width / 2.0) - 1, ceil(maze_width / 2.0) + 1):
+		for y in range(floor(maze_height / 2.0) - 1, ceil(maze_height / 2.0) + 1):
+			maze_array[x][y] = 0
+	
+	var background = brain_wall.instantiate()
+	background.set_scale(Vector2(maze_width, maze_height))
+	background.modulate.a = 0.5
+	$Maze.add_child(background)
+	for x in range(maze_width):
+		for y in range(maze_height):
+			if maze_array[x][y] == 1:
+				var wall = brain_wall.instantiate()
+				wall.set_position(Vector2(x * 200, y * 200))
+				$Maze.add_child(wall)
 	
 func _init_maze() -> void:
 	for x in range(maze_width): # 0 = empty, 1 = wall
 		maze_array.append([])
 		for y in range(maze_height):
 			maze_array[x].append(1)
-			
-	maze_array[round(maze_width / 2.0) ][round(maze_width / 2.0)] = 0
-	maze_array[round(maze_width / 2.0)][round(maze_width / 2.0) + 1] = 0
-	maze_array[round(maze_width / 2.0) + 1][round(maze_width / 2.0)] = 0
-	maze_array[round(maze_width / 2.0) + 1][round(maze_width / 2.0) + 1] = 0
 
 func _shuffle(array : Array) -> void:
 	var rng = RandomNumberGenerator.new()
@@ -50,6 +60,6 @@ func _generate_maze(x : int, y : int) -> void:
 				ny = y - 2
 				
 		if _is_in_bounds(nx, ny) and maze_array[nx][ny] == 1:
-			maze_array[(x + nx) / 2][(y + ny) / 2] = 0
+			maze_array[floor((x + nx) / 2.0)][floor((y + ny) / 2.0)] = 0
 			_generate_maze(nx, ny)
 			

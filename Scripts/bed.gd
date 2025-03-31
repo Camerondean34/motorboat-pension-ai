@@ -18,15 +18,17 @@ func _ready() -> void:
 func _on_prompt_area_body_entered(body: Node2D) -> void:
 	if body is Player:
 		var PlayerBody = body as Player
-		PlayerBody.togglePrompt.emit()
+		PlayerBody.find_child("ButtonPrompt").togglePrompt.emit()
 		PlayerByBed = true
 
 func _on_prompt_area_body_exited(body: Node2D) -> void:
 	if body is Player:
 		var PlayerBody = body as Player
-		PlayerBody.togglePrompt.emit()
+		PlayerBody.find_child("ButtonPrompt").togglePrompt.emit()
 		PlayerByBed = true
 		
 func _input(event: InputEvent) -> void:
 	if PlayerByBed and event.is_action_pressed("Interact"):
-		SceneManager.change_scene.emit()
+		PensionerPrison.prisonerOnBed = false
+		get_parent().remove_child(self)
+		SceneManager.change_scene.emit("res://Scenes/brain_minigame_scene.tscn", false)

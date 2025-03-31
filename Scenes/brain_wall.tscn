@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://byfg2v54yqgoi"]
+
+[ext_resource type="Texture2D" uid="uid://bmxpnp1l11a83" path="res://Assets/BrainWall.jpg" id="1_jbvuo"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_736dm"]
+size = Vector2(200, 200)
+
+[node name="BrainWall" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(100, 100)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("1_jbvuo")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(100, 100)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource("RectangleShape2D_736dm")
