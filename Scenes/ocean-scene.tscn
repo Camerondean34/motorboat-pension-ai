@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=4 uid="uid://coqp1xgcbct0a"]
+[gd_scene load_steps=11 format=4 uid="uid://coqp1xgcbct0a"]
 
 [ext_resource type="Script" uid="uid://bee64ah3j6jds" path="res://Scripts/ocean_scene.gd" id="1_ap103"]
 [ext_resource type="PackedScene" uid="uid://diekdtpkyeyiu" path="res://Assets/OceanTiles/rock_1.tscn" id="2_sr2bs"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" uid="uid://dkbhf3pbljfin" path="res://Scripts/camera_2d.gd" id="3_y6qb8"]
 [ext_resource type="PackedScene" uid="uid://bb3ehn3ob60nc" path="res://Assets/OceanTiles/island1.tscn" id="4_j4u5r"]
 [ext_resource type="PackedScene" uid="uid://civ1j5sd3wm4w" path="res://Scenes/boat_player_scene.tscn" id="6_w45r0"]
+[ext_resource type="AudioStream" uid="uid://rr7hp3peue4x" path="res://Assets/Music/MainOstFull.wav" id="8_dxelm"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_y6qb8"]
 texture = ExtResource("2_v2nft")
@@ -1492,3 +1493,7 @@ tile_map_layer = NodePath("..")
 
 [node name="BoatPlayerScene" parent="." instance=ExtResource("6_w45r0")]
 position = Vector2(1162, 661)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_dxelm")
+autoplay = true

@@ -1,9 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://bv5nxxg31tn63"]
+[gd_scene load_steps=11 format=3 uid="uid://bv5nxxg31tn63"]
 
 [ext_resource type="Texture2D" uid="uid://culip1h1bw34d" path="res://Assets/Backgrounds/MainMenu/PensionPiracyTitle.png" id="1_h8aqk"]
 [ext_resource type="Script" uid="uid://xqt6bs02o4vi" path="res://Scripts/MainMenuButtons.gd" id="2_h8aqk"]
 [ext_resource type="Texture2D" uid="uid://c3rs6mkc1y6ea" path="res://Assets/Backgrounds/MainMenu/StartButton.png" id="3_llaub"]
 [ext_resource type="Texture2D" uid="uid://y1qy3us6l6l4" path="res://Assets/Backgrounds/MainMenu/QuitButton.png" id="4_yujfi"]
+[ext_resource type="AudioStream" uid="uid://rr7hp3peue4x" path="res://Assets/Music/MainOstFull.wav" id="5_yujfi"]
 
 [sub_resource type="Theme" id="Theme_qky18"]
 Button/colors/font_hover_color = Color(0.140447, 0.140448, 0.140448, 1)
@@ -116,6 +117,10 @@ libraries = {
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(0.6, 0.6)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_yujfi")
+autoplay = true
 
 [connection signal="button_down" from="VBoxContainer/Start Game" to="VBoxContainer" method="_on_start_game_button_down"]
 [connection signal="mouse_entered" from="VBoxContainer/Start Game" to="VBoxContainer" method="_on_start_game_mouse_entered"]

@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://c65im6f2ns03t"]
+[gd_scene load_steps=4 format=3 uid="uid://c65im6f2ns03t"]
 
 [ext_resource type="Script" uid="uid://boyw2feclkrec" path="res://Scripts/brain_minigame_scene.gd" id="1_qhkcf"]
 [ext_resource type="Texture2D" uid="uid://dh2ons7g05xt8" path="res://Assets/Backgrounds/Boat/SpookyHospitalBackground.jpg" id="2_t8k8t"]
+[ext_resource type="AudioStream" uid="uid://dpsgky4ki7ppy" path="res://Assets/Music/MiniGame.wav" id="3_vlbul"]
 
 [node name="BrainMinigameScene" type="Node2D"]
 script = ExtResource("1_qhkcf")
@@ -17,3 +18,7 @@ scale = Vector2(0.15, 0.15)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 anchor_mode = 0
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_vlbul")
+autoplay = true

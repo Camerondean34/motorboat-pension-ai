@@ -7,10 +7,16 @@ var BoatIsDocked = false
 
 var island_scene = preload("res://Scenes/island_scene.tscn")
 
+@onready var boat_music = load("res://Assets/Music/Inside.wav")
+@onready var basement_music = load("res://Assets/Music/TheBasement.wav")
+@onready var island_music = load("res://Assets/Music/IslandLoop.wav")
+
 @onready var animation_player: AnimationPlayer = $CanvasLayer/AnimationPlayer
 @onready var color_rect: ColorRect = $CanvasLayer/ColorRect
 
 func _ready() -> void:
+	$AudioStreamPlayer.stream = boat_music
+	$AudioStreamPlayer.play()
 	animation_player.play("reverse_transition")
 	color_rect.set_visible(false)
 	$Basement/StairPromptArea.body_entered.connect(_on_stair_prompt_area_body_entered)
@@ -44,12 +50,19 @@ func _input(event: InputEvent) -> void:
 			$Player.position.y -= 1000
 			$Player.CameraXMax = 0
 			$Player.CameraXMin = -625
+			$AudioStreamPlayer.stop()
+			$AudioStreamPlayer.stream = boat_music
+			$AudioStreamPlayer.play()
 		else:
 			$Player.position.y += 1000
 			$Player.position.x = -525
 			$Player.CameraXMax = -670
 			$Player.CameraXMin = -825
 			$Basement._on_player_entered_basement()
+			$AudioStreamPlayer.stop()
+			if PensionerPrison.prisonerOnBed:
+				$AudioStreamPlayer.stream = basement_music
+				$AudioStreamPlayer.play()
 		PlayerInBasement = !PlayerInBasement
 		
 func _on_boat_docked() -> void:
@@ -75,3 +88,12 @@ func _undock_boat() -> void:
 		$DoorWall/CollisionShape2D.disabled = false	
 		$Background.animation = "door_closed"
 		$Player.CameraXMin = -625
+
+func _on_music_area_body_exited(body: Node2D) -> void:
+	if body is Player:
+		$AudioStreamPlayer.stop()
+		if body.position > $MusicArea.position:
+			$AudioStreamPlayer.stream = boat_music
+		else:
+			$AudioStreamPlayer.stream = island_music
+		$AudioStreamPlayer.play()
