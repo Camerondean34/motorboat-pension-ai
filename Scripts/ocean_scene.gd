@@ -93,19 +93,27 @@ func place_rocks(selected_squads):
 		rock_instance.position = center_pos * 16
 		add_child(rock_instance)
 
+
+func pick_random_large_squad():
+	
+	var random_index = randi() % all_large_squads.size()
+	var large_squad = all_large_squads[random_index]
+	return large_squad
+
 func place_random_island():
 	if all_large_squads.size() == 0 or islands.size() == 0:
 		print("No valid 16x16 squad or islands available!")
 		return
 
-	var random_index = randi() % all_large_squads.size()
-	var large_squad = all_large_squads[random_index]
-	var center_pos = calculate_center(large_squad)
-	var random_island_scene = islands[randi() % islands.size()]
-	var island_instance = random_island_scene.instantiate()
-	island_instance.position = center_pos * 16
-	add_child(island_instance)
-	mark_squad_as_contested(large_squad)
+	var large_squad = pick_random_large_squad()
+	
+	if is_squad_uncontested(large_squad):
+		var center_pos = calculate_center(large_squad)
+		var random_island_scene = islands[randi() % islands.size()]
+		var island_instance = random_island_scene.instantiate()
+		island_instance.position = center_pos * 16
+		add_child(island_instance)
+		mark_squad_as_contested(large_squad)
 
 func _input(event: InputEvent) -> void:
 	if event.is_action("Escape"):
