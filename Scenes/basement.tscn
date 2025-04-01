@@ -29,7 +29,9 @@ shape = SubResource("RectangleShape2D_xbfwj")
 position = Vector2(300, 100)
 shape = SubResource("RectangleShape2D_gidub")
 
-[node name="Bed" parent="." instance=ExtResource("2_gidub")]
+[node name="BedContainer" type="Node2D" parent="."]
+
+[node name="Bed" parent="BedContainer" instance=ExtResource("2_gidub")]
 position = Vector2(-142, 206)
 scale = Vector2(0.3, 0.3)
 

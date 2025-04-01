@@ -4,6 +4,8 @@ var array_2d = []
 @export var rocks: Array[PackedScene] = []
 @export var islands: Array[PackedScene] = []  # List of island scenes
 
+var BoatByIsland = false
+
 var rows = 80
 var columns = 160
 var all_squads = []
@@ -111,6 +113,8 @@ func place_random_island():
 		var center_pos = calculate_center(large_squad)
 		var random_island_scene = islands[randi() % islands.size()]
 		var island_instance = random_island_scene.instantiate()
+		island_instance.find_child("PromptArea").body_entered.connect(_on_island_prompt_area_body_entered)
+		island_instance.find_child("PromptArea").body_exited.connect(_on_island_prompt_area_body_exited)
 		island_instance.position = center_pos * 16
 		add_child(island_instance)
 		mark_squad_as_contested(large_squad)
@@ -118,3 +122,15 @@ func place_random_island():
 func _input(event: InputEvent) -> void:
 	if event.is_action("Escape"):
 		SceneManager.change_scene.emit("BOAT", false)
+	elif BoatByIsland and event.is_action_pressed("Interact"):
+		PlayerVariables.boat_has_docked.emit()
+		SceneManager.change_scene.emit("BOAT", false)
+		
+func _on_island_prompt_area_body_entered(body: Node2D) -> void:
+	if body is BoatPlayer and !BoatByIsland:
+		$BoatPlayerScene/ButtonPrompt.togglePrompt.emit()
+		BoatByIsland = true
+func _on_island_prompt_area_body_exited(body: Node2D) -> void:
+	if body is BoatPlayer and BoatByIsland:
+		$BoatPlayerScene/ButtonPrompt.togglePrompt.emit()
+		BoatByIsland = false

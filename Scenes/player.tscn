@@ -1,12 +1,11 @@
-[gd_scene load_steps=11 format=3 uid="uid://cdb60yuo4h7k2"]
+[gd_scene load_steps=10 format=3 uid="uid://cdb60yuo4h7k2"]
 
-[ext_resource type="Script" uid="uid://dtns28gnyxpl1" path="res://Scripts/PlayerMovement.gd" id="1_cvnsp"]
+[ext_resource type="Script" uid="uid://3xilbwf6ehiu" path="res://Scripts/PlayerMovement.gd" id="1_cvnsp"]
 [ext_resource type="Texture2D" uid="uid://bjxr1fm28m0vq" path="res://Assets/Robot/PlayerLeft.png" id="2_fkybt"]
 [ext_resource type="Texture2D" uid="uid://dmdvp3frklwhf" path="res://Assets/Robot/PlayerFront.png" id="3_x3wgy"]
 [ext_resource type="Texture2D" uid="uid://vf8jdsjoka0v" path="res://Assets/Robot/PlayerWalkLeft.png" id="4_3smsa"]
 [ext_resource type="Texture2D" uid="uid://dbvm7hl7cc1de" path="res://Assets/Robot/PlayerWalkRight.png" id="5_8erm5"]
-[ext_resource type="Script" uid="uid://ifus3as0rhc8" path="res://Scripts/PlayerButtonPrompt.gd" id="6_3smsa"]
-[ext_resource type="Texture2D" uid="uid://cnumqwmh7bbmb" path="res://Assets/UI Elements/ButtonPromptE.png" id="6_x3wgy"]
+[ext_resource type="PackedScene" uid="uid://c61uk304dux7" path="res://Scenes/button_prompt.tscn" id="6_3smsa"]
 [ext_resource type="PackedScene" uid="uid://cacqv1tutnlbs" path="res://Scenes/player_hud.tscn" id="8_8erm5"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_vgqql"]
@@ -67,18 +66,8 @@ shape = SubResource("CapsuleShape2D_fkybt")
 [node name="IdleTimer" type="Timer" parent="."]
 wait_time = 2.0
 
-[node name="ButtonPrompt" type="Node2D" parent="."]
+[node name="ButtonPrompt" parent="." instance=ExtResource("6_3smsa")]
 position = Vector2(0, -225)
-script = ExtResource("6_3smsa")
-
-[node name="ButtonSprite" type="Sprite2D" parent="ButtonPrompt"]
-visible = false
-scale = Vector2(0.25, 0.25)
-texture = ExtResource("6_x3wgy")
-
-[node name="Timer" type="Timer" parent="ButtonPrompt"]
-wait_time = 0.5
-autostart = true
 
 [node name="Camera2D" type="Camera2D" parent="."]
 

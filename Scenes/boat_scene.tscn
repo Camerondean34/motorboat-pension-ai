@@ -1,8 +1,10 @@
-[gd_scene load_steps=14 format=3 uid="uid://ca00wpbiej7yu"]
+[gd_scene load_steps=17 format=3 uid="uid://ca00wpbiej7yu"]
 
 [ext_resource type="Texture2D" uid="uid://bwa3nroe4u384" path="res://Assets/Backgrounds/Boat/BoatInterior.png" id="1_e1sr1"]
 [ext_resource type="PackedScene" uid="uid://cdb60yuo4h7k2" path="res://Scenes/player.tscn" id="1_ptph0"]
 [ext_resource type="Script" uid="uid://cd4lt031qqrmk" path="res://Scripts/BoatScene.gd" id="1_vu0h2"]
+[ext_resource type="PackedScene" uid="uid://df4cpxoailrje" path="res://Scenes/island_scene.tscn" id="2_ed81b"]
+[ext_resource type="Texture2D" uid="uid://bnkel55c6dgsm" path="res://Assets/Backgrounds/Boat/BoatInteriorDoorOpen.png" id="3_d0olb"]
 [ext_resource type="Texture2D" uid="uid://b8wpd0dsth172" path="res://Assets/Items/SteeringWheel.png" id="3_hlnli"]
 [ext_resource type="PackedScene" uid="uid://dbrcwdtnjg5g1" path="res://Scenes/basement.tscn" id="4_8bu2l"]
 
@@ -58,6 +60,25 @@ _data = {
 &"transition": SubResource("Animation_dk6jx")
 }
 
+[sub_resource type="SpriteFrames" id="SpriteFrames_ed81b"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_e1sr1")
+}],
+"loop": true,
+"name": &"door_closed",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_d0olb")
+}],
+"loop": true,
+"name": &"door_open",
+"speed": 5.0
+}]
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_d0olb"]
 radius = 138.87
 
@@ -92,10 +113,16 @@ libraries = {
 &"": SubResource("AnimationLibrary_ytrps")
 }
 
-[node name="Background" type="Sprite2D" parent="."]
+[node name="IslandContainer" type="Node2D" parent="."]
+position = Vector2(-1650, -115)
+
+[node name="IslandScene" parent="IslandContainer" instance=ExtResource("2_ed81b")]
+
+[node name="Background" type="AnimatedSprite2D" parent="."]
 position = Vector2(-300, 0)
 scale = Vector2(0.839, 0.825)
-texture = ExtResource("1_e1sr1")
+sprite_frames = SubResource("SpriteFrames_ed81b")
+animation = &"door_closed"
 
 [node name="StairPromptArea" type="Area2D" parent="."]
 position = Vector2(-600, -50)

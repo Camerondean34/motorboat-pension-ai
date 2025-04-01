@@ -1,4 +1,5 @@
 extends CharacterBody2D
+class_name BoatPlayer
 const max_speed = 200
 @export var speed = max_speed
 const friction = 2;
