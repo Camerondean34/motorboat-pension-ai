@@ -1,2 +1,10 @@
 # motorboat-pension-ai
-Three Thing Game 2025
+
+A game made as part of the [Three Thing Game 2025](https://threethinggame.com/post/2025-03-11-the-week-long-event/) game jam.
+
+Our three things were: ```Motorboat``` ```Pension``` ```AI```
+
+![Image](./Assets/Backgrounds/MainMenu/PensionPiracyTitle.png)
+
+This game can be found on the [itch.io page](https://itch.io/jam/three-thing-game-march-2025) for the jam, alongside entries from other teams.
+
