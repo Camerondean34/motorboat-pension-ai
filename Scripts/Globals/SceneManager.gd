@@ -27,6 +27,6 @@ func _deferred_goto_scene(scene, pDeleteCurrent):
 	if current_scene and current_scene.get_parent():
 		get_tree().root.remove_child(current_scene)
 	get_tree().root.add_child(scene)
-	if pDeleteCurrent:
+	if pDeleteCurrent and current_scene != null:
 		current_scene.queue_free()
 	current_scene = scene

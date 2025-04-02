@@ -13,15 +13,20 @@ func _ready() -> void:
 			maze_array[x][y] = 0
 	
 	var background = brain_wall.instantiate()
+	background.find_child("StaticBody2D").get_child(0).disabled = true
 	background.set_scale(Vector2(maze_width, maze_height))
 	background.modulate.a = 0.5
 	$Maze.add_child(background)
+	$Maze/MazeArea.set_scale(Vector2(maze_width, maze_height))
+	$Maze/MazeArea.set_position(Vector2((maze_width / 2.0) * 200, (maze_height / 2.0) * 200))
 	for x in range(maze_width):
 		for y in range(maze_height):
 			if maze_array[x][y] == 1:
 				var wall = brain_wall.instantiate()
 				wall.set_position(Vector2(x * 200, y * 200))
 				$Maze.add_child(wall)
+	$Maze/Brain.set_position(Vector2((maze_width / 2.0) * 200, (maze_height / 2.0) * 200))
+	$Maze/Brain.brain_collided.connect(_on_brain_collided)
 	
 func _init_maze() -> void:
 	for x in range(maze_width): # 0 = empty, 1 = wall
@@ -62,4 +67,20 @@ func _generate_maze(x : int, y : int) -> void:
 		if _is_in_bounds(nx, ny) and maze_array[nx][ny] == 1:
 			maze_array[floor((x + nx) / 2.0)][floor((y + ny) / 2.0)] = 0
 			_generate_maze(nx, ny)
-			
+
+func _on_brain_collided() -> void: # Player has died
+	print_debug("Player Died")
+	SceneManager.change_scene.emit("BOAT", true)
+
+
+func _on_maze_area_body_exited(body: Node2D) -> void: # Player has escaped the maze
+	print_debug("Player Escape")
+	if body is Brain:
+		SceneManager.change_scene.emit("BOAT", true)
+		if PensionerPrison.prisoners.size() == PensionerPrison.pensionerCapacity:
+			PensionerPrison.prisoners.shuffle();
+			PensionerPrison.prisoners.pop_back();
+		var pensioner = Pensioner.new()
+		PensionerPrison.prisoners.append(pensioner)
+		PlayerVariables.accountBalance += pensioner.payout;
+		

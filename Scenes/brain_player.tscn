@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://kbihlx6uky8c"]
+
+[ext_resource type="Texture2D" uid="uid://dp1vty33go88" path="res://Assets/Items/Jar.png" id="1_4rccb"]
+[ext_resource type="Script" uid="uid://dd3y7pm2l5y6q" path="res://Scripts/brain_player.gd" id="1_sx2gw"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sx2gw"]
+size = Vector2(75, 75)
+
+[node name="Brain" type="CharacterBody2D"]
+script = ExtResource("1_sx2gw")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_sx2gw")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("1_4rccb")

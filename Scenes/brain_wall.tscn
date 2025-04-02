@@ -8,9 +8,9 @@ size = Vector2(200, 200)
 [node name="BrainWall" type="Node2D"]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(100, 100)
 scale = Vector2(0.1, 0.1)
 texture = ExtResource("1_jbvuo")
+centered = false
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 position = Vector2(100, 100)

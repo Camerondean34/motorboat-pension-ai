@@ -57,13 +57,6 @@ func update_ui() -> void:
 	pass
 
 func capture_pensioner() -> void:
-	if PensionerPrison.prisoners.size() == PensionerPrison.pensionerCapacity:
-		PensionerPrison.prisoners.shuffle();
-		PensionerPrison.prisoners.pop_back();
-	
-	var pensioner = Pensioner.new()
-	PensionerPrison.prisoners.append(pensioner)
-	PlayerVariables.accountBalance += pensioner.payout;
 	PensionerPrison.typeOnBed = PensionerType
 	PensionerPrison.prisonerOnBed = true
 	
