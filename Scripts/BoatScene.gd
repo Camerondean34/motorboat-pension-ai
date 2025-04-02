@@ -4,6 +4,7 @@ var PlayerByStairs = false
 var PlayerInBasement = false
 
 var BoatIsDocked = false
+var camYMin = -625
 
 var island_scene = preload("res://Scenes/island_scene.tscn")
 
@@ -49,7 +50,7 @@ func _input(event: InputEvent) -> void:
 		if PlayerInBasement:
 			$Player.position.y -= 1000
 			$Player.CameraXMax = 0
-			$Player.CameraXMin = -625
+			$Player.CameraXMin = camYMin
 			$AudioStreamPlayer.stop()
 			$AudioStreamPlayer.stream = boat_music
 			$AudioStreamPlayer.play()
@@ -76,7 +77,8 @@ func _on_boat_docked() -> void:
 		$Background.animation = "door_open"
 		var new_island = island_scene.instantiate()
 		$IslandContainer.add_child(new_island)
-		$Player.CameraXMin = -2380
+		camYMin = -2380
+		$Player.CameraXMin = camYMin
 	
 func _undock_boat() -> void:
 	if BoatIsDocked:
@@ -87,7 +89,8 @@ func _undock_boat() -> void:
 				currentIsland.queue_free()
 		$DoorWall/CollisionShape2D.disabled = false	
 		$Background.animation = "door_closed"
-		$Player.CameraXMin = -625
+		camYMin = -625
+		$Player.CameraXMin = camYMin
 
 func _on_music_area_body_exited(body: Node2D) -> void:
 	if body is Player:

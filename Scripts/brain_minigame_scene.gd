@@ -69,18 +69,15 @@ func _generate_maze(x : int, y : int) -> void:
 			_generate_maze(nx, ny)
 
 func _on_brain_collided() -> void: # Player has died
-	print_debug("Player Died")
 	SceneManager.change_scene.emit("BOAT", true)
 
 
 func _on_maze_area_body_exited(body: Node2D) -> void: # Player has escaped the maze
-	print_debug("Player Escape")
 	if body is Brain:
-		SceneManager.change_scene.emit("BOAT", true)
 		if PensionerPrison.prisoners.size() == PensionerPrison.pensionerCapacity:
 			PensionerPrison.prisoners.shuffle();
 			PensionerPrison.prisoners.pop_back();
 		var pensioner = Pensioner.new()
 		PensionerPrison.prisoners.append(pensioner)
 		PlayerVariables.accountBalance += pensioner.payout;
-		
+		SceneManager.change_scene.emit("BOAT", true)
